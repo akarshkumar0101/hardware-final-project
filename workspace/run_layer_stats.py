@@ -3,6 +3,7 @@ import os
 import threading
 import timeloopfe.v4 as tl
 import argparse
+import pickle
 
 EXAMPLE_DIR = "example_designs"
 TOP_JINJA_PATH = "example_designs/top.yaml.jinja2"
@@ -33,7 +34,9 @@ def run_mapper(arch_target, problem, output_file):
     os.makedirs(output_dir, exist_ok=True)
     
     spec = tl.Specification.from_yaml_files(TOP_JINJA_PATH,jinja_parse_data = jinja_parse_data)
-    #buf = spec.architecture.find("buffer")
+    #print(spec)
+    buf = spec.architecture.find("shared_glb")
+    buf.attributes["depth"] = 1000
     tl.call_mapper(
         spec,
         output_dir="output",
@@ -66,6 +69,7 @@ def run_mapper(arch_target, problem, output_file):
         stat_dict[key] = val
     energy = float(stats[-1].split("=")[-1])
     stat_dict['Total Energy (fJ/Compute)'] = energy
+    print(stat_dict)
     with open(output_file, 'wb') as f:
         pickle.dump(stat_dict, f)
 
@@ -76,6 +80,7 @@ def main():
     problems = [os.path.join("..",problem, f) for f in os.listdir(problem)]
     options = getArgumentParser().parse_args()
     outfile = options.output_file
+    run_mapper(arch_target, problems[0], outfile)
 
 if __name__ == "__main__":
     main()
