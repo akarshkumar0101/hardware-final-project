@@ -35,8 +35,8 @@ def run_mapper(arch_target, problem, output_file):
     
     spec = tl.Specification.from_yaml_files(TOP_JINJA_PATH,jinja_parse_data = jinja_parse_data)
     #print(spec)
-    buf = spec.architecture.find("shared_glb")
-    buf.attributes["depth"] = 1000
+    #buf = spec.architecture.find("shared_glb")
+    #buf.attributes["depth"] = 1000
     tl.call_mapper(
         spec,
         output_dir="output",
@@ -78,9 +78,10 @@ def main():
     problem = os.path.join("layer_shapes","vgg16")
     # all possible problems here
     problems = [os.path.join("..",problem, f) for f in os.listdir(problem)]
+    print(problems)
     options = getArgumentParser().parse_args()
     outfile = options.output_file
-    run_mapper(arch_target, problems[0], outfile)
+    run_mapper(arch_target, problems[13], outfile)
 
 if __name__ == "__main__":
     main()
