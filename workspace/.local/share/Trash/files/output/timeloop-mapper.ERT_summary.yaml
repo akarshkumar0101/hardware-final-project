@@ -1,0 +1,115 @@
+ERT_summary:
+    version: '0.4'
+    table_summary:
+      - name: system_top_level.DRAM[1..1]
+        actions:
+          - name: read
+            energy: 512.0
+          - name: write
+            energy: 512.0
+          - name: leak
+            energy: 0.0
+          - name: update
+            energy: 512.0
+        primitive_estimation(s):
+          - name: system_top_level.DRAM[1..1]
+            estimator: CactiDRAM
+      - name: system_top_level.shared_glb[1..1]
+        actions:
+          - name: write
+            energy: 18.978492
+          - name: read
+            energy: 25.120092
+          - name: leak
+            energy: 0.021248
+          - name: update
+            energy: 18.978492
+        primitive_estimation(s):
+          - name: storage
+            estimator: CactiSRAM
+          - name: address_generators[0]
+            estimator: Neurosim Plug-In
+          - name: address_generators[1]
+            estimator: Neurosim Plug-In
+          - name: address_generators[0..1]
+            estimator: Neurosim Plug-In
+      - name: system_top_level.ifmap_spad[1..168]
+        actions:
+          - name: write
+            energy: 1.249768
+          - name: read
+            energy: 1.629548
+          - name: leak
+            energy: 0.001061
+          - name: update
+            energy: 1.249768
+        primitive_estimation(s):
+          - name: storage.storage[1..64]
+            estimator: Library
+          - name: storage.comparator[1..64]
+            estimator: Library
+          - name: address_generators[0]
+            estimator: Neurosim Plug-In
+          - name: address_generators[1]
+            estimator: Neurosim Plug-In
+          - name: storage.storage[1..4096]
+            estimator: Library
+          - name: address_generators[0..1]
+            estimator: Neurosim Plug-In
+      - name: system_top_level.weights_spad[1..168]
+        actions:
+          - name: write
+            energy: 7.479736
+          - name: read
+            energy: 7.669626
+          - name: leak
+            energy: 0.006359
+          - name: update
+            energy: 7.479736
+        primitive_estimation(s):
+          - name: storage.storage[1..32]
+            estimator: Library
+          - name: storage.comparator[1..384]
+            estimator: Library
+          - name: address_generators[0]
+            estimator: Neurosim Plug-In
+          - name: address_generators[1]
+            estimator: Neurosim Plug-In
+          - name: storage.storage[1..12288]
+            estimator: Library
+          - name: address_generators[0..1]
+            estimator: Neurosim Plug-In
+      - name: system_top_level.psum_spad[1..168]
+        actions:
+          - name: write
+            energy: 1.255831
+          - name: read
+            energy: 2.015391
+          - name: leak
+            energy: 0.001062
+          - name: update
+            energy: 1.255831
+        primitive_estimation(s):
+          - name: storage.storage[1..128]
+            estimator: Library
+          - name: storage.comparator[1..64]
+            estimator: Library
+          - name: address_generators[0]
+            estimator: Neurosim Plug-In
+          - name: address_generators[1]
+            estimator: Neurosim Plug-In
+          - name: storage.storage[1..8192]
+            estimator: Library
+          - name: address_generators[0..1]
+            estimator: Neurosim Plug-In
+      - name: system_top_level.mac[1..168]
+        actions:
+          - name: compute
+            energy: 0.207692
+          - name: leak
+            energy: 0.002374
+        primitive_estimation(s):
+          - name: intadder
+            estimator: Library
+          - name: intmultiplier
+            estimator: Library

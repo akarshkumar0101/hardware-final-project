@@ -50,8 +50,8 @@ def genetic_algorithm():
     np.random.seed(0)
 
     ngen = 100
-    n_parents = 16
-    npop = 32
+    n_parents = 8
+    npop = 16
     mr = 0.01
     if isinstance(mr, float):
         mr = {k: mr for k in search_space.keys()}
