@@ -255,4 +255,48 @@ if __name__ == "__main__":
     main_genetic_algo()
 
 
+def final_results_verify():
+    # before optimization
+    x1 = {
+        "shared_glb/attributes/depth": 16384,
+        "shared_glb/attributes/width": 64,
+        "PE_column/spatial/meshX": 14,
+        "PE/spatial/meshY": 12,
+        "ifmap_spad/attributes/depth": 12,
+        "ifmap_spad/attributes/width": 16,
+    
+        "weights_spad/attributes/depth": 192,
+        "weights_spad/attributes/width": 16,
+    
+        "psum_spad/attributes/depth": 16,
+        "psum_spad/attributes/width": 16
+    }
+    # after optimization
+    x2 = {
+        "shared_glb/attributes/depth": 512,
+        "shared_glb/attributes/width": 512,
+        "PE_column/spatial/meshX": 4,
+        "PE/spatial/meshY": 168//4,
+        "ifmap_spad/attributes/depth": 6,
+        "ifmap_spad/attributes/width": 64,
+    
+        "weights_spad/attributes/depth": 48,
+        "weights_spad/attributes/width": 64,
+    
+        "psum_spad/attributes/depth": 8,
+        "psum_spad/attributes/width": 128,
+
+    }
+    stats = evaluate_function(x1)
+    for k,v in stats.items():
+        print(k, ": ", v)
+
+    print("----")
+    stats = evaluate_function(x2)
+    for k,v in stats.items():
+        print(k, ": ", v)
+
+
+
+
 
